@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.towers-container {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+}
+
+#tower1-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.piece-5 {
+    background-color: blue;
+    width: 225px;
+    height: 25px;
+}
+
+.piece-4 {
+    background-color: rosybrown;
+    width: 175px;
+    height: 25px;
+}
+
+.piece-3 {
+    background-color: coral;
+    width: 125px;
+    height: 25px;
+}
+
+.piece-2 {
+    background-color: blueviolet;
+    width: 75px;
+    height: 25px;
+}
+
+.piece-1 {
+    background-color: brown;
+    width: 25px;
+    height: 25px;
+}

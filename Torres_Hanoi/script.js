@@ -4,26 +4,40 @@ let towers = {
     tower3: []
 };
 
-let towers10 = [
-    "tower1" = [5, 4, 3, 2, 1],
-    "tower2" = [],
-    "tower3" = []
-];
-
-console.log(towers10);
-
-tower1 = [5, 4, 3, 2, 1];
 
 function moveFromTo(from, to) {
 
-    from = "tower" + from;
-    to = "tower" + from;
+    fromTower = towers["tower" + from];
+    toTower = towers["tower" + to];
 
-    to.push(from.pop());
+    if (fromTower.length == 0) {
+        alert("No puedes mover algo que no existe crack");
+    } else if (fromTower[fromTower.length - 1] > toTower[toTower - 1]) {
+        alert("no puedes meter eso ahí");
+    } else {
 
-    console.log(tower1);
-    console.log(tower2);
-    console.log(tower3);
+        //MOVE PIECE
+        toTower.push(fromTower.pop());
 
+        console.log(towers["tower1"]);
+        console.log(towers["tower2"]);
+        console.log(towers["tower3"]);
+
+        //RENDER TOWERS
+        renderTowers();
+    }
 }
 
+function renderTowers() {
+
+    let towe1div = document.getElementById("tower1-div").innerHTML = "";
+    let towe2div = document.getElementById("tower2-div").innerHTML = "";
+    let towe3div = document.getElementById("tower3-div").innerHTML = "";
+
+    towers["tower1"].forEach(element => {
+        let piece = '<div class = piece-"' + element + '"></div>';
+        document.getElementById("tower1-div").innerHTML = piece;
+    });
+
+
+}
