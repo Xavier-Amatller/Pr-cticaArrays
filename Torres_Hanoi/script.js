@@ -11,7 +11,6 @@ document.getElementById("submit").addEventListener("click", () => {
     }
     document.getElementById("nPiezas-div").innerHTML = "";
     renderTowers()
-    console.log(towers);
 });
 
 function moveFromTo(from, to) {
@@ -26,6 +25,10 @@ function moveFromTo(from, to) {
     } else {
         toTower.push(fromTower.pop());
         renderTowers();
+    }
+    
+    if (towers[0].length == 0 && towers[1].length == 0) {
+        document.body.innerHTML = '<h1>ENORABUENA HAS GANADO</h1>';
     }
 }
 
@@ -44,7 +47,5 @@ function renderTowers() {
             let tower = 'tower' + (index + 1) + '-div';
             document.getElementById(tower).innerHTML += piece;
         });
-
-
     }
 }
