@@ -9,12 +9,14 @@
 
     <script src="script.js" defer></script>
   </head>
-  <body>
-    <div id="div-start">
+  <body oncontextmenu="return false;">
+    <div id="div-start" style="display: inline;">
       <button id="start">START!</button>
     </div>
-    <div id="board" class="board">
-        
+    Punctuation:<div id="punctuation" style="display: inline;"></div>
+    <div id="result"></div>
+    <div class="center-board">
+      <div id="board" class="board"></div>
     </div>
   </body>
 </html>
