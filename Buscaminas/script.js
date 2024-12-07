@@ -22,7 +22,6 @@ function renderBoard() {
                     }
                 }
             });
-
             document.getElementById("board").appendChild(box);
         });
     });
@@ -100,7 +99,7 @@ function boxClicked(event) {
 
 function showAllBoard() {
     let allBoxes = [...document.getElementsByClassName("box")];
-    
+
     allBoxes.forEach(box => {
 
         let row = box.dataset.row;
