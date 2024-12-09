@@ -1,5 +1,7 @@
 let board = [];
 
+document.getElementById("start").addEventListener("click", renderBoard);
+
 function renderBoard() {
     document.getElementById("div-start").innerText = "";
     board = Array.from({ length: 8 }, () => Array(8).fill(0));
@@ -11,20 +13,23 @@ function renderBoard() {
             box.className = "box";
             box.dataset.row = i;
             box.dataset.column = k;
-            box.addEventListener("mousedown", event => {
-                if (event.button == 0) {
-                    boxClicked(event);
-                } else if (event.button == 2) {
-                    if (box.style.backgroundColor == "" || box.style.backgroundColor == "black") {
-                        box.style.backgroundColor = "red";
-                    } else if (box.style.backgroundColor == "red") {
-                        box.style.backgroundColor = "black"
-                    }
-                }
-            });
+            box.addEventListener("mousedown", a);
             document.getElementById("board").appendChild(box);
         });
     });
+}
+
+function a(event) {
+    let box = event.target;
+    if (event.button == 0) {
+        boxClicked(event);
+    } else if (event.button == 2) {
+        if (box.style.backgroundColor == "" || box.style.backgroundColor == "black") {
+            box.style.backgroundColor = "red";
+        } else if (box.style.backgroundColor == "red") {
+            box.style.backgroundColor = "black";
+        }
+    }
 }
 
 const directions = [
@@ -33,7 +38,6 @@ const directions = [
     [1, -1], [1, 0], [1, 1]     // Abajo
 ];
 
-document.getElementById("start").addEventListener("click", renderBoard);
 
 function setBoard() {
     let nBombsLeft = 10;
@@ -82,19 +86,22 @@ function boxClicked(event) {
 
     box.innerText = board[row][column];
     box.style.backgroundColor = "antiquewhite";
-    box.removeEventListener("click", boxClicked);
 
     if (board[row][column] == "B") {
         document.getElementById("result").innerHTML = "<h1>BOOOOOOOOOOM!!!!! HAS PERDIDO :(</h1>";
         box.style.color = "red";
         showAllBoard();
     }
-
-    if (punctuation == 74) {
-        document.getElementById("result").innerHTML = "<h1>HAS GANADOOO :)</h1>";
-    }
     punctuation++;
+    if (punctuation == 54) {
+        document.getElementById("result").innerHTML = "<h1>HAS GANADOOO :)</h1>";
+        showAllBoard();
+    }
+    
+
     document.getElementById("punctuation").innerText = punctuation;
+    box.removeEventListener("mousedown", a);
+
 }
 
 function showAllBoard() {
@@ -107,8 +114,6 @@ function showAllBoard() {
 
         box.innerText = board[row][column];
         box.style.backgroundColor = "antiquewhite";
-        box.removeEventListener("click", boxClicked);
+        box.removeEventListener("mousedown", a);
     });
-
-
 }
